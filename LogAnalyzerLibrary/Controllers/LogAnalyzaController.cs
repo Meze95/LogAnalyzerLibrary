@@ -18,11 +18,11 @@ namespace LogAnalyzerLibrary.Controllers
         }
 
         [HttpPost("GetTotalCountOfAvailablelogs")]
-        public IActionResult GetTotalCountOfAvailablelogs([FromBody] TotalCountParam param)
+        public IActionResult GetTotalCountOfAvailableLogs([FromBody] MiltiDirectoryParamDto param)
         {
            if(param != null)
             {
-                var res = _logAnalyzerHelper.GetTotalCountOfAvailablelogsInAService(param);
+                var res = _logAnalyzerHelper.GetTotalCountOfAvailableLogsInAService(param);
                 switch (res.Code)
                 {
                     case HttpStatusCode.OK:
@@ -35,7 +35,7 @@ namespace LogAnalyzerLibrary.Controllers
         }
        
         [HttpPost("DeleteAvailablelogsByDateRange")]
-        public IActionResult DeleteAvailablelogs([FromBody] TotalCountParam param)
+        public IActionResult DeleteAvailableLogs([FromBody] MiltiDirectoryParamDto param)
         {
            if(param != null)
             {
@@ -52,7 +52,7 @@ namespace LogAnalyzerLibrary.Controllers
         }
         
         [HttpPost("GetUniqueTotalCountOfAvailablelogs")]
-        public async Task<IActionResult> GetUniqueTotalCountOfAvailablelogs([FromBody] TotalCountParam param)
+        public async Task<IActionResult> GetUniqueTotalCountOfAvailableLogs([FromBody] MiltiDirectoryParamDto param)
         {
             if (param != null)
             {
@@ -69,7 +69,7 @@ namespace LogAnalyzerLibrary.Controllers
         }
 
         [HttpPost("GetDuplicateTotalCountOfAvailablelogs")]
-        public async Task<IActionResult> GetDuplicateTotalCountOfAvailablelogs([FromBody] TotalCountParam param)
+        public async Task<IActionResult> GetDuplicateTotalCountOfAvailableLogs([FromBody] MiltiDirectoryParamDto param)
         {
             if (param != null)
             {
@@ -86,7 +86,7 @@ namespace LogAnalyzerLibrary.Controllers
         }
 
         [HttpPost("ArchiveLogsFromPeriod")]
-        public async Task<IActionResult> ArchiveLogsFromPeriod([FromBody] ArchiveParamVM param)
+        public async Task<IActionResult> ArchiveLogsFromPeriod([FromBody] ArchiveParamDto param)
         {
             if (param != null)
             {
@@ -137,7 +137,7 @@ namespace LogAnalyzerLibrary.Controllers
         }
 
         [HttpPost("DeleteArchive")]
-        public async Task<IActionResult> DeleteArchive([FromBody] ArchiveParamVM param)
+        public async Task<IActionResult> DeleteArchive([FromBody] ArchiveParamDto param)
         {
             if (param != null)
             {

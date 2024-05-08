@@ -1,6 +1,6 @@
 ﻿namespace LogAnalyzerLibrary.Model
 {
-    public class TotalCountParam
+    public class MiltiDirectoryParamDto
     {
         public string[] Directories { get; set; }
         public DateTime StartPeriod { get; set; }

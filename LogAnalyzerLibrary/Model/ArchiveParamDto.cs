@@ -1,6 +1,6 @@
 ﻿namespace LogAnalyzerLibrary.Model
 {
-    public class ArchiveParamVM
+    public class ArchiveParamDto
     {
         public string Directory { get; set; }
         public DateTime StartPeriod { get; set; }

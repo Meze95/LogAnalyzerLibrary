@@ -10,12 +10,12 @@ namespace LogAnalyzerLibrary.Logic
 {
     public interface ILogAnalyzerHelper
     {
-        Task<ApiResponse> ArchiveLogsFromPeriodService(ArchiveParamVM param);
-        Task<ApiResponse> DeleteArchiveForAPeriodService(ArchiveParamVM param);
-        ApiResponse DeleteAvailablelogsInAService(TotalCountParam param);
-        Task<ApiResponse> GetDuplictaeTotalCountOfAvailablelogsService(TotalCountParam param);
-        ApiResponse GetTotalCountOfAvailablelogsInAService(TotalCountParam param);
-        Task<ApiResponse> GetUniqueTotalCountOfAvailablelogsService(TotalCountParam param);
+        Task<ApiResponse> ArchiveLogsFromPeriodService(ArchiveParamDto param);
+        Task<ApiResponse> DeleteArchiveForAPeriodService(ArchiveParamDto param);
+        ApiResponse DeleteAvailablelogsInAService(MiltiDirectoryParamDto param);
+        Task<ApiResponse> GetDuplictaeTotalCountOfAvailablelogsService(MiltiDirectoryParamDto param);
+        ApiResponse GetTotalCountOfAvailableLogsInAService(MiltiDirectoryParamDto param);
+        Task<ApiResponse> GetUniqueTotalCountOfAvailablelogsService(MiltiDirectoryParamDto param);
         Task<ApiResponse> SearchLogsBySizeService(LogSizeSearchDto param);
         Task<ApiResponse> SearchLogsPerDirectoryService(string[] param);
         Task<ApiResponse> UploadLogToRemoteServerService(string[] directories);
@@ -66,7 +66,7 @@ namespace LogAnalyzerLibrary.Logic
             return resp;
         }
 
-        public ApiResponse GetTotalCountOfAvailablelogsInAService(TotalCountParam param)
+        public ApiResponse GetTotalCountOfAvailableLogsInAService(MiltiDirectoryParamDto param)
         {
             var response = new ApiResponse();
             var count = 0;
@@ -108,7 +108,7 @@ namespace LogAnalyzerLibrary.Logic
             return DateTime.ParseExact(match.Value, "yyyy.MM.dd", null);
         }
 
-        public ApiResponse DeleteAvailablelogsInAService(TotalCountParam param)
+        public ApiResponse DeleteAvailablelogsInAService(MiltiDirectoryParamDto param)
         {
             var response = new ApiResponse();
             var count = 0;
@@ -142,7 +142,7 @@ namespace LogAnalyzerLibrary.Logic
             response.OutResponses.Message = count > 0 ? $"{count} record(s) deleted" : "No Record Found";
             return response;
         }
-        public async Task<ApiResponse> GetUniqueTotalCountOfAvailablelogsService(TotalCountParam param)
+        public async Task<ApiResponse> GetUniqueTotalCountOfAvailablelogsService(MiltiDirectoryParamDto param)
         {
             var response = new ApiResponse();
             try
@@ -219,7 +219,7 @@ namespace LogAnalyzerLibrary.Logic
             }
         }
 
-        public async Task<ApiResponse> GetDuplictaeTotalCountOfAvailablelogsService(TotalCountParam param)
+        public async Task<ApiResponse> GetDuplictaeTotalCountOfAvailablelogsService(MiltiDirectoryParamDto param)
         {
             var response = new ApiResponse();
             try
@@ -296,7 +296,7 @@ namespace LogAnalyzerLibrary.Logic
             }
         }
 
-        public async Task<ApiResponse> ArchiveLogsFromPeriodService(ArchiveParamVM param)
+        public async Task<ApiResponse> ArchiveLogsFromPeriodService(ArchiveParamDto param)
         {
             var response = new ApiResponse();
             try
@@ -447,7 +447,7 @@ namespace LogAnalyzerLibrary.Logic
             return fileSizeKB >= minSizeKB && fileSizeKB <= maxSizeKB;
         }
 
-        public async Task<ApiResponse> DeleteArchiveForAPeriodService(ArchiveParamVM param)
+        public async Task<ApiResponse> DeleteArchiveForAPeriodService(ArchiveParamDto param)
         {
             var response = new ApiResponse();
             try
